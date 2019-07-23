@@ -1,0 +1,19 @@
+body {
+    background-color: #b3adff;
+}
+
+.side-bar {
+    float: left;
+    background-color: #ffdbdb;
+    width: 30%;
+}
+
+.shell {
+    float: right;
+}
+
+ul {
+    list-style: none;
+    text-align: center;
+    font-size: 30px;
+}

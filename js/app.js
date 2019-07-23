@@ -1,6 +1,7 @@
 `use strict`;
 //--------------------------------------------Data-------------------------------------------------------------
 var itemNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+// var extension = [`.jpg`]
 var displayNames = ['Bag', 'Banana Cutter', 'Bathroom Shtuff', 'Toeless Boots', 'Breakfast', 'Bubblegum', 'Weird Chair', 'Cthulhu Figure', 'Dog-Duck Muzzle', 'Dragon Meat', 'Pen', 'Pet-Sweeper', 'Scissors', 'Shark Attack Sack', 'Baby Scoot Sweeper', 'Tauntaun', 'Unicorn Meat', 'Usb', 'Water-can', 'Wine-glass'];
 var allItems = [];
 var totalClicks = 0;
@@ -11,7 +12,7 @@ var itemsDisplayedArray = [];
 // CONSTRUCTOR FUNCTION----------------------------------------------------------------------------------------
 
 function Item(name) {
-  this.name = name;
+  this.name = name
   this.imageURL = `img/${name}.jpg`;
   this.votes = 0;
   this.displays = 0;
@@ -160,7 +161,7 @@ function finalResults() {
     // thumbnail.setAttribute('height', '250px');
     // listItem.appendChild(thumbnail);
 
-    listItem.textContent = `${item.name} has ${item.votes} votes and ${item.displays} views`;
+    listItem.textContent = `${displayNames[i]} has ${item.votes} votes and ${item.displays} views`;
     list.appendChild(listItem);
   }
   results.appendChild(list);
@@ -171,7 +172,7 @@ function finalResults() {
 //FUNCTION TO HANDLE THE CHART-------------------------------------------------------------------------------------------------------------
 function chartResults() {
   console.log(`creating variable votes`);
-  var votes = variableCreator();
+  var votes = votesCreator();
   var colors = [
     `rgb(77,255,219)`,
     `rgb(255,87,165)`,
@@ -222,7 +223,7 @@ function chartResults() {
 
   console.log(`I am running`);
   var canvas = document.getElementById('canvas').getContext('2d');
-  var resultsChart = new Chart (canvas, {
+  var resultsChart = new Chart(canvas, {
     type: `bar`,
     data: {
       labels: displayNames,
@@ -246,17 +247,17 @@ function chartResults() {
   })
 
 
-    // context.fillStyle = "rgba(0.30,0.65,1.00)";
-    // context.fillRect(20,20,30,60);
-    //
-    // context.fillStyle = "rgba(1.00,0.77,0.42)";
-    // context.fillRect(10,20,30,40);
-  }
+  // context.fillStyle = "rgba(0.30,0.65,1.00)";
+  // context.fillRect(20,20,30,60);
+  //
+  // context.fillStyle = "rgba(1.00,0.77,0.42)";
+  // context.fillRect(10,20,30,40);
+}
 
 //-------------------------------------------------------------------------------------------------------------
 
-//FUNCTION TO CREATE VARIABLES-------------------------------------------------------------------------------------------------------------
-function variableCreator() {
+//FUNCTION TO CREATE VOTES VARIABLE-------------------------------------------------------------------------------------------------------------
+function votesCreator() {
   var votes = [];
   for (var i = 0; i < allItems.length; i++) {
     votes.push(allItems[i].votes)
