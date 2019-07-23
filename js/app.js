@@ -1,6 +1,11 @@
 `use strict`;
 //--------------------------------------------Data-------------------------------------------------------------
 var itemNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
+<<<<<<< HEAD
+=======
+// var extension = [`.jpg`]
+var displayNames = ['Bag', 'Banana Cutter', 'Bathroom Shtuff', 'Toeless Boots', 'Breakfast', 'Bubblegum', 'Weird Chair', 'Cthulhu Figure', 'Dog-Duck Muzzle', 'Dragon Meat', 'Pen', 'Pet-Sweeper', 'Scissors', 'Shark Attack Sack', 'Baby Scoot Sweeper', 'Tauntaun', 'Unicorn Meat', 'Usb', 'Water-can', 'Wine-glass'];
+>>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
 var allItems = [];
 var totalClicks = 0;
 var itemsDisplayedArray = [];
@@ -10,7 +15,11 @@ var itemsDisplayedArray = [];
 // CONSTRUCTOR FUNCTION----------------------------------------------------------------------------------------
 
 function Item(name) {
+<<<<<<< HEAD
   this.name = name;
+=======
+  this.name = name
+>>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
   this.imageURL = `img/${name}.jpg`;
   this.votes = 0;
   this.displays = 0;
@@ -130,6 +139,10 @@ function totalClicksChecker() {
       images[i].removeEventListener('click', handleVotes);
     }
 
+<<<<<<< HEAD
+=======
+    chartResults();
+>>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
     finalResults();
   }
 }
@@ -139,7 +152,12 @@ function totalClicksChecker() {
 //FUNCTION THAT DISPLAYS FINAL RESULTS-------------------------------------------------------------------------------------------------------------
 
 function finalResults() {
+<<<<<<< HEAD
   var results = document.getElementById('results-shell')
+=======
+  // chartResults();
+  var results = document.getElementById('results-shell');
+>>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
   var list = document.createElement('ul');
   // var thumbnail = document.createElement('img');
 
@@ -157,12 +175,121 @@ function finalResults() {
     // thumbnail.setAttribute('height', '250px');
     // listItem.appendChild(thumbnail);
 
+<<<<<<< HEAD
     listItem.textContent = `${item.name} has ${item.votes} votes and ${item.displays} views`;
+=======
+    listItem.textContent = `${displayNames[i]} has ${item.votes} votes and ${item.displays} views`;
+>>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
     list.appendChild(listItem);
   }
   results.appendChild(list);
 }
 
+<<<<<<< HEAD
+=======
+//-------------------------------------------------------------------------------------------------------------
+
+//FUNCTION TO HANDLE THE CHART-------------------------------------------------------------------------------------------------------------
+function chartResults() {
+  console.log(`creating variable votes`);
+  var votes = votesCreator();
+  var colors = [
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`,
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`,
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`,
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`,
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`,
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`,
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`,
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`,
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`,
+    `rgb(77,255,219)`,
+    `rgb(255,87,165)`
+
+  ];
+
+  var border = [
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`,
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`,
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`,
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`,
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`,
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`,
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`,
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`,
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`,
+    `rgb(0,0,0)`,
+    `rgb(87,87,87)`
+
+  ];
+
+  console.log(`I am running`);
+  var canvas = document.getElementById('canvas').getContext('2d');
+  var resultsChart = new Chart(canvas, {
+    type: `bar`,
+    data: {
+      labels: displayNames,
+      datasets: [{
+        label: `# of Votes`,
+        data: votes,
+        backgroundColor: colors,
+        borderColor: border,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  })
+
+
+  // context.fillStyle = "rgba(0.30,0.65,1.00)";
+  // context.fillRect(20,20,30,60);
+  //
+  // context.fillStyle = "rgba(1.00,0.77,0.42)";
+  // context.fillRect(10,20,30,40);
+}
+
+//-------------------------------------------------------------------------------------------------------------
+
+//FUNCTION TO CREATE VOTES VARIABLE-------------------------------------------------------------------------------------------------------------
+function votesCreator() {
+  var votes = [];
+  for (var i = 0; i < allItems.length; i++) {
+    votes.push(allItems[i].votes)
+  }
+  console.log(`all votes collected ${votes}`);
+  return votes;
+}
+// TESTS FOR THE ABOVE FUNCTION
+// console.log(itemCreator());
+// console.log(render());
+// console.log(variableCreator());
+>>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
 
 //-------------------------------------------------------------------------------------------------------------
 
