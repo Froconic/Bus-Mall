@@ -1,0 +1,15 @@
+.side-bar {
+    float: left;
+    height: 100%;
+    width: 20%;
+}
+.shell {
+    position: absolute;
+    top: 35px;
+    right: 70px;
+}
+
+.clear-fix {
+    clear:both;
+    overflow: hidden;
+}
