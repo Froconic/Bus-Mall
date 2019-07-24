@@ -306,20 +306,6 @@ function dataStore() {
   return data;
 }
 //-------------------------------------------------------------------------------------------------------------
-
-//FUNCTION TO CHECK IF DATA IS NEW-------------------------------------------------------------------------------------------------------------
-function checkData() {
-  console.log('I am Runnning');
-  var oldData = dataStore();
-  var newData = votesCreator();
-
-  if (newData !== oldData) {
-    dataStore();
-    console.log('collecting new data to store');
-  }
-}
-//-------------------------------------------------------------------------------------------------------------
-
 //--------------------------------------------Executables-------------------------------------------------------------
 //CALL STACK OF ALL NECESSARY FUNCTIONS
 itemCreator();
