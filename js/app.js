@@ -1,11 +1,9 @@
 `use strict`;
 //--------------------------------------------Data-------------------------------------------------------------
 var itemNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
-<<<<<<< HEAD
-=======
+
 // var extension = [`.jpg`]
 var displayNames = ['Bag', 'Banana Cutter', 'Bathroom Shtuff', 'Toeless Boots', 'Breakfast', 'Bubblegum', 'Weird Chair', 'Cthulhu Figure', 'Dog-Duck Muzzle', 'Dragon Meat', 'Pen', 'Pet-Sweeper', 'Scissors', 'Shark Attack Sack', 'Baby Scoot Sweeper', 'Tauntaun', 'Unicorn Meat', 'Usb', 'Water-can', 'Wine-glass'];
->>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
 var allItems = [];
 var totalClicks = 0;
 var itemsDisplayedArray = [];
@@ -15,11 +13,8 @@ var itemsDisplayedArray = [];
 // CONSTRUCTOR FUNCTION----------------------------------------------------------------------------------------
 
 function Item(name) {
-<<<<<<< HEAD
   this.name = name;
-=======
   this.name = name
->>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
   this.imageURL = `img/${name}.jpg`;
   this.votes = 0;
   this.displays = 0;
@@ -133,17 +128,15 @@ function handleVotes(event) {
 //TOTAL CLICKS CHECKER FUNCTION-------------------------------------------------------------------------------------------------------------
 function totalClicksChecker() {
   if (totalClicks === 25) {
-    console.log(`game over!`);
+    // console.log(`game over!`);
     var images = document.getElementsByTagName('img');
     for (var i = 0; i < images.length; i++) {
       images[i].removeEventListener('click', handleVotes);
     }
 
-<<<<<<< HEAD
-=======
     chartResults();
->>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
     finalResults();
+    dataStore();
   }
 }
 
@@ -151,14 +144,8 @@ function totalClicksChecker() {
 
 //FUNCTION THAT DISPLAYS FINAL RESULTS-------------------------------------------------------------------------------------------------------------
 
-function finalResults() {
-<<<<<<< HEAD
-  var results = document.getElementById('results-shell')
-=======
-  // chartResults();
-  var results = document.getElementById('results-shell');
->>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
-  var list = document.createElement('ul');
+function finalResults() {  var results = document.getElementById('results-shell')  // chartResults();
+  var results = document.getElementById('results-shell');  var list = document.createElement('ul');
   // var thumbnail = document.createElement('img');
 
   // console.log(image);
@@ -175,23 +162,18 @@ function finalResults() {
     // thumbnail.setAttribute('height', '250px');
     // listItem.appendChild(thumbnail);
 
-<<<<<<< HEAD
     listItem.textContent = `${item.name} has ${item.votes} votes and ${item.displays} views`;
-=======
     listItem.textContent = `${displayNames[i]} has ${item.votes} votes and ${item.displays} views`;
->>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
     list.appendChild(listItem);
   }
   results.appendChild(list);
 }
 
-<<<<<<< HEAD
-=======
 //-------------------------------------------------------------------------------------------------------------
 
 //FUNCTION TO HANDLE THE CHART-------------------------------------------------------------------------------------------------------------
 function chartResults() {
-  console.log(`creating variable votes`);
+  // console.log(`creating variable votes`);
   var votes = votesCreator();
   var colors = [
     `rgb(77,255,219)`,
@@ -241,7 +223,7 @@ function chartResults() {
 
   ];
 
-  console.log(`I am running`);
+  // console.log(`I am running`);
   var canvas = document.getElementById('canvas').getContext('2d');
   var resultsChart = new Chart(canvas, {
     type: `bar`,
@@ -282,26 +264,25 @@ function votesCreator() {
   for (var i = 0; i < allItems.length; i++) {
     votes.push(allItems[i].votes)
   }
-  console.log(`all votes collected ${votes}`);
+  // console.log(`all votes collected ${votes}`);
   return votes;
 }
 // TESTS FOR THE ABOVE FUNCTION
 // console.log(itemCreator());
 // console.log(render());
 // console.log(variableCreator());
->>>>>>> 0345c4b79c44f94cc31d30b0397db36c1c16bc21
 
-//-------------------------------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------------------
 
 //FUNCTION THAT HANDLES THE SIDEBAR-------------------------------------------------------------------------------------------------------------
 
 function sidebarResults() {
-  console.log('I am running');
+  // console.log('I am running');
   var sidebar = document.getElementById('progress');
   var list = document.createElement('li');
 
   list.textContent = `Times voted: ${totalClicks}`
-  console.log(list.textContent);
+  // console.log(list.textContent);
   sidebar.appendChild(list);
 }
 
@@ -310,6 +291,33 @@ function sidebarResults() {
 // console.log(render());
 // console.log(sidebarResults());
 
+//-------------------------------------------------------------------------------------------------------------
+
+//FUNCTION TO HANDLE LOCAL STORAGE-------------------------------------------------------------------------------------------------------------
+function dataStore() {
+  checkData();
+  var data = votesCreator();
+  // console.log(`Data has been collected have a look ${data}`);
+  // data = JSON.stringify(data);
+  localStorage.setItem('data', JSON.stringify(data) );
+  console.log(`Storage set : ${localStorage.getItem('data')}`);
+  // console.log(JSON.parse(data));
+
+  return data;
+}
+//-------------------------------------------------------------------------------------------------------------
+
+//FUNCTION TO CHECK IF DATA IS NEW-------------------------------------------------------------------------------------------------------------
+function checkData() {
+  console.log('I am Runnning');
+  var oldData = dataStore();
+  var newData = votesCreator();
+
+  if (newData !== oldData) {
+    dataStore();
+    console.log('collecting new data to store');
+  }
+}
 //-------------------------------------------------------------------------------------------------------------
 
 //--------------------------------------------Executables-------------------------------------------------------------
