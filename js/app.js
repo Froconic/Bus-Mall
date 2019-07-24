@@ -71,10 +71,29 @@ function displayedItems() {
 // console.table(displayedItems());
 //-------------------------------------------------------------------------------------------------------------
 
+// FUNCTION TO CHECK FOR PREVIOUS DISPLAY-------------------------------------------------------------------------------------------------------------
+function duplicateEliminator(){
+  var oldItems = itemsDisplayedArray;
+  console.log(`Old items are ${oldItems}`);
+  var newItems = displayedItems();
+  console.log(`New items are ${newItems}`);
+
+
+  if (newItems === oldItems){
+    newItems();
+  } else {
+    return newItems;
+  }
+
+
+}
+//-------------------------------------------------------------------------------------------------------------
+
 
 //RENDER FUNCTION-------------------------------------------------------------------------------------------------------------
 function render() {
   displayedItems();
+  duplicateEliminator();
   var itemShell = document.getElementById('item-shell');
   //Creates the open display
   itemShell.innerHTML = '';
@@ -302,7 +321,7 @@ function dataStore() {
   console.log(`Storage set : ${localStorage.getItem('data')}`);
   // console.log(JSON.parse(data));
 
-  return data;
+  return localStorage.getItem('data');
 }
 //-------------------------------------------------------------------------------------------------------------
 //--------------------------------------------Executables-------------------------------------------------------------
