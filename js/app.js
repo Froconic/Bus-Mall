@@ -296,7 +296,7 @@ function sidebarResults() {
 //FUNCTION TO HANDLE LOCAL STORAGE-------------------------------------------------------------------------------------------------------------
 function dataStore() {
   var data = votesCreator();
-  // console.log(`Data has been collected have a look ${data}`);
+  console.log(`Data has been collected have a look ${data}`);
   // data = JSON.stringify(data);
   localStorage.setItem('data', JSON.stringify(data) );
   console.log(`Storage set : ${localStorage.getItem('data')}`);
